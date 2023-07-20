@@ -40,7 +40,3 @@ possible to write Tina-friendly React components like this:
 This is not _exactly_ zero-js, because each page needs to check whether to 
 hydrate these components. But it results in <1KB of js total getting sent to 
 the client (if I understand Astro's hydration strategy correctly).
-
-Unfortunately Astro v2 currently throws an error when importing the Tina client 
-and requires [this tagged 
-release](https://github.com/tinacms/tinacms/issues/3764#issuecomment-1603459568).
