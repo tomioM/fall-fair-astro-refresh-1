@@ -1,21 +1,21 @@
+// .tina/config.ts
 import { defineStaticConfig } from "tinacms";
-
-// Your hosting provider likely exposes this as an environment variable
-const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
-
-export default defineStaticConfig({
+var branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+var config_default = defineStaticConfig({
   branch,
-  clientId: null, // Get this from tina.io
-  token: null, // Get this from tina.io
+  clientId: null,
+  // Get this from tina.io
+  token: null,
+  // Get this from tina.io
   build: {
     outputFolder: "admin",
-    publicFolder: "public",
+    publicFolder: "public"
   },
   media: {
     tina: {
       mediaRoot: "uploads",
-      publicFolder: "public",
-    },
+      publicFolder: "public"
+    }
   },
   schema: {
     collections: [
@@ -26,7 +26,7 @@ export default defineStaticConfig({
         format: "md",
         ui: {
           router: (props) => {
-            return '/'
+            return "/";
           }
         },
         fields: [
@@ -35,21 +35,21 @@ export default defineStaticConfig({
             name: "title",
             label: "Title",
             required: true,
-            isTitle: true,
+            isTitle: true
           },
           {
             type: "string",
             name: "subtitle",
             label: "Subtitle",
-            required: true,
+            required: true
           },
           {
             type: "rich-text",
             name: "body",
             label: "Body",
-            isBody: true,
-          },
-        ],
+            isBody: true
+          }
+        ]
       },
       {
         name: "page",
@@ -58,12 +58,12 @@ export default defineStaticConfig({
         format: "yaml",
         ui: {
           router: (props) => {
-            return '/about'
+            return "/about";
           },
           allowedActions: {
             create: false,
-            delete: false,
-          },
+            delete: false
+          }
         },
         fields: [
           {
@@ -71,15 +71,18 @@ export default defineStaticConfig({
             name: "heading",
             label: "Heading",
             required: true,
-            isTitle: true,
+            isTitle: true
           },
           {
             type: "rich-text",
             name: "description",
-            label: "Description",
-          },
-        ],
-      },
-    ],
-  },
+            label: "Description"
+          }
+        ]
+      }
+    ]
+  }
 });
+export {
+  config_default as default
+};

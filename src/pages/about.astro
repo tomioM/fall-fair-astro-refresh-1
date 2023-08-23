@@ -1,7 +1,7 @@
 ---
 import { client } from '../../.tina/__generated__/client'
-import { MyComponent } from '../components/react'
-const response = await client.queries.post({relativePath: "hello-world.md"})
+import { MyComponent } from '../components/react-yaml'
+const response = await client.queries.page({relativePath: "home.yaml"})
 ---
 
 <main>
@@ -11,9 +11,3 @@ const response = await client.queries.post({relativePath: "hello-world.md"})
 	<MyComponent client:tina {...response} />
 	<h1>Hi</h1>
 </main>
-
-<style is:inline>
-	h1 {
-		color: red;
-	}
-</style>
