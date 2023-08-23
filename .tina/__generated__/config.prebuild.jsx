@@ -20,13 +20,17 @@ var config_default = defineStaticConfig({
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
-        format: "md",
+        name: "page",
+        label: "Pages",
+        path: "content/pages",
+        format: "yaml",
         ui: {
           router: (props) => {
             return "/";
+          },
+          allowedActions: {
+            create: false,
+            delete: false
           }
         },
         fields: [
@@ -38,45 +42,25 @@ var config_default = defineStaticConfig({
             isTitle: true
           },
           {
-            type: "string",
-            name: "subtitle",
-            label: "Subtitle",
-            required: true
+            type: "number",
+            name: "year",
+            label: "Year"
           },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true
-          }
-        ]
-      },
-      {
-        name: "page",
-        label: "Pages",
-        path: "content/pages",
-        format: "yaml",
-        ui: {
-          router: (props) => {
-            return "/about";
-          },
-          allowedActions: {
-            create: false,
-            delete: false
-          }
-        },
-        fields: [
           {
             type: "string",
-            name: "heading",
-            label: "Heading",
-            required: true,
-            isTitle: true
+            name: "subheading",
+            label: "Subheading",
+            ui: {
+              component: "textarea"
+            }
           },
           {
-            type: "rich-text",
+            type: "string",
             name: "description",
-            label: "Description"
+            label: "Description",
+            ui: {
+              component: "textarea"
+            }
           }
         ]
       }
